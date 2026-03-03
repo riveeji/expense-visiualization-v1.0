@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { summarizeByCategory, summarizeByMonth, toCsv, type ExpenseRecord } from './expenses'
+import type { ExpenseRecord } from '../types'
+import { summarizeByCategory, summarizeByMonth, toCsv } from './expenses'
 
 const sample: ExpenseRecord[] = [
   {

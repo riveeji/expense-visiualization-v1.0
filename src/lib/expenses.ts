@@ -1,26 +1,7 @@
-export interface ExpenseRecord {
-  id: string
-  date: string
-  category: string
-  amount: number
-  note: string
-  merchant: string
-  paymentMethod: string
-  necessary: '必要' | '非必要'
-}
+import type { CategorySummary, ExpenseRecord, MonthSummary } from '../types'
 
-export interface CategorySummary {
-  category: string
-  total: number
-}
-
-export interface MonthSummary {
-  month: string
-  total: number
-}
-
-export function normalizeAmount(input: string): number {
-  const amount = Number.parseFloat(input)
+export function normalizeAmount(input: string | number): number {
+  const amount = typeof input === 'number' ? input : Number.parseFloat(input)
   if (!Number.isFinite(amount) || amount <= 0) {
     return 0
   }
@@ -32,7 +13,6 @@ export function summarizeByCategory(items: ExpenseRecord[]): CategorySummary[] {
   for (const item of items) {
     bucket.set(item.category, (bucket.get(item.category) ?? 0) + item.amount)
   }
-
   return [...bucket.entries()]
     .map(([category, total]) => ({ category, total }))
     .sort((a, b) => b.total - a.total)
@@ -44,7 +24,6 @@ export function summarizeByMonth(items: ExpenseRecord[]): MonthSummary[] {
     const month = item.date.slice(0, 7)
     bucket.set(month, (bucket.get(month) ?? 0) + item.amount)
   }
-
   return [...bucket.entries()]
     .map(([month, total]) => ({ month, total }))
     .sort((a, b) => a.month.localeCompare(b.month))

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;700&family=Noto+Sans+SC:wght@400;500;700;800&display=swap');
 
 :root {
   font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
@@ -37,6 +37,28 @@ body {
   box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
 }
 
+.fade-in {
+  animation: fadeIn 0.25s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
 .hero h1 {
   margin: 0;
   font-size: 2.1rem;
@@ -48,10 +70,21 @@ body {
   color: #334155;
 }
 
+.header-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
 .tabs {
   display: flex;
   gap: 0.5rem;
   flex-wrap: wrap;
+}
+
+.sticky-mobile {
+  position: sticky;
+  top: 0.5rem;
+  z-index: 10;
 }
 
 .tab {
@@ -92,6 +125,7 @@ body {
 
 .stat-card strong {
   font-size: 1.28rem;
+  font-family: 'Inter', sans-serif;
 }
 
 .grid-2 {
@@ -161,15 +195,12 @@ body {
 .budget-progress span.healthy {
   background: #16a34a;
 }
-
 .budget-progress span.notice {
   background: #ca8a04;
 }
-
 .budget-progress span.warning {
   background: #ea580c;
 }
-
 .budget-progress span.danger {
   background: #dc2626;
 }
@@ -199,8 +230,11 @@ body {
   flex-wrap: wrap;
 }
 
-.budget-controls input {
-  min-width: 160px;
+.mode-row {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  margin-top: 0.7rem;
 }
 
 .toolbar {
@@ -208,6 +242,27 @@ body {
   justify-content: space-between;
   align-items: center;
   gap: 0.8rem;
+}
+
+.toolbar-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.template-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.8rem 0;
+}
+
+.template-chip {
+  border-radius: 999px;
+  padding: 0.35rem 0.6rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
 }
 
 .expense-form {
@@ -254,12 +309,24 @@ button {
   color: #fff;
   border: none;
   font-weight: 600;
-  transition: transform 0.12s ease, filter 0.12s ease;
+  transition:
+    transform 0.12s ease,
+    filter 0.12s ease;
 }
 
 button:hover {
   filter: brightness(1.06);
   transform: translateY(-1px);
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.icon-btn.danger {
+  background: linear-gradient(120deg, #ef4444, #dc2626);
 }
 
 .action-row {
@@ -312,11 +379,7 @@ button:hover {
   display: grid;
   gap: 0.35rem;
   text-align: right;
-  min-width: 132px;
-}
-
-.record-meta button:last-child {
-  background: linear-gradient(120deg, #ef4444, #dc2626);
+  min-width: 180px;
 }
 
 .badge {
@@ -356,6 +419,35 @@ button:hover {
   font-size: 0.9rem;
 }
 
+.onboarding h2 {
+  margin-top: 0;
+}
+
+.onboarding p {
+  color: #475569;
+}
+
+.template-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.6rem;
+}
+
+.template-card {
+  background: #ffffff;
+  border: 1px solid #d8e2f0;
+  text-align: left;
+  border-radius: 12px;
+  padding: 0.7rem;
+  display: grid;
+  gap: 0.3rem;
+}
+
+.template-card span {
+  color: #475569;
+  font-size: 0.86rem;
+}
+
 .empty,
 .error {
   margin: 0.5rem 0 0;
@@ -377,5 +469,26 @@ button:hover {
 
   .record-meta {
     text-align: left;
+    min-width: auto;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tabs {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    border-top: 1px solid #d9e2f1;
+    padding: 0.5rem;
+    justify-content: space-between;
+  }
+
+  .tab {
+    flex: 1;
+  }
+
+  .page {
+    padding-bottom: 4.2rem;
   }
 }
