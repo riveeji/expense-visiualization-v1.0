@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Expense Visualizer
 
 A small personal finance web app for tracking expenses and visualizing spending trends.
@@ -50,3 +51,7 @@ src/
 
 - All records are stored locally in your browser.
 - CSV export uses current filter results.
+=======
+# expense-visiualization-v1.0
+a tool for expense-visiualization
+>>>>>>> 1dc31b231f4fe7bac7a7975d4d69e95d7e1bcd3a
