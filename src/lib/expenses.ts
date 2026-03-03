@@ -4,6 +4,9 @@ export interface ExpenseRecord {
   category: string
   amount: number
   note: string
+  merchant: string
+  paymentMethod: string
+  necessary: '必要' | '非必要'
 }
 
 export interface CategorySummary {
@@ -48,10 +51,19 @@ export function summarizeByMonth(items: ExpenseRecord[]): MonthSummary[] {
 }
 
 export function toCsv(items: ExpenseRecord[]): string {
-  const header = ['Date', 'Category', 'Amount', 'Note']
+  const header = ['日期', '分类', '金额', '商家', '支付方式', '必要性', '备注']
   const rows = items.map((item) => {
     const escapedNote = item.note.replaceAll('"', '""')
-    return [item.date, item.category, item.amount.toFixed(2), `"${escapedNote}"`].join(',')
+    const escapedMerchant = item.merchant.replaceAll('"', '""')
+    return [
+      item.date,
+      item.category,
+      item.amount.toFixed(2),
+      `"${escapedMerchant}"`,
+      item.paymentMethod,
+      item.necessary,
+      `"${escapedNote}"`,
+    ].join(',')
   })
   return [header.join(','), ...rows].join('\n')
 }

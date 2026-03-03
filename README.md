@@ -1,41 +1,48 @@
-<<<<<<< HEAD
-# Expense Visualizer
+# 账单可视化助手（expense-visiualization-v1.0）
 
-A small personal finance web app for tracking expenses and visualizing spending trends.
+一个轻量、中文友好的个人记账可视化工具。
 
-## Features
+## 功能
 
-- Add and delete expense records
-- Filter by month, category, and keyword
-- Pie chart for category breakdown
-- Bar chart for monthly total trend (last 6 months)
-- Export filtered data to CSV
-- Persist data in browser `localStorage`
+- 新增和删除记账记录
+- 更详细的记账字段
+- 商家、支付方式、必要/非必要标记
+- 按月份、分类、关键词筛选
+- 分类占比饼图、近 6 个月趋势柱图
+- 月预算设置 + 阈值预警 + 消费建议
+- 导出当前筛选结果为 CSV
+- 数据保存在浏览器本地 `localStorage`
 
-## Tech Stack
+## 技术栈
 
 - React + TypeScript + Vite
 - Chart.js + react-chartjs-2
 - date-fns
 - Vitest
 
-## Quick Start
+## 本地运行
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open the app at the URL shown in terminal.
+## 仅运行（生产预览）
 
-## Scripts
+```bash
+npm install
+npm run build
+npm run preview -- --host 127.0.0.1
+```
 
-- `npm run dev` - Start local development server
-- `npm run build` - Type check and build production bundle
-- `npm run preview` - Preview production build
-- `npm run test` - Run unit tests
+## 常用脚本
 
-## Project Structure
+- `npm run dev` 本地开发
+- `npm run build` 生产构建
+- `npm run preview` 预览构建产物
+- `npm run test` 运行单元测试
+
+## 目录结构
 
 ```text
 src/
@@ -46,12 +53,3 @@ src/
     expenses.ts
     expenses.test.ts
 ```
-
-## Notes
-
-- All records are stored locally in your browser.
-- CSV export uses current filter results.
-=======
-# expense-visiualization-v1.0
-a tool for expense-visiualization
->>>>>>> 1dc31b231f4fe7bac7a7975d4d69e95d7e1bcd3a
