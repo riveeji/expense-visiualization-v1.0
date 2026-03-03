@@ -2,7 +2,26 @@
   "name": "expense-visualizer",
   "private": true,
   "version": "0.0.0",
+  "description": "A polished expense tracker with budgeting, forecasting, and data visualization.",
   "type": "module",
+  "author": "riveeji",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/riveeji/expense-visiualization-v1.0.git"
+  },
+  "homepage": "https://github.com/riveeji/expense-visiualization-v1.0",
+  "bugs": {
+    "url": "https://github.com/riveeji/expense-visiualization-v1.0/issues"
+  },
+  "keywords": [
+    "expense-tracker",
+    "budgeting",
+    "react",
+    "typescript",
+    "pwa",
+    "data-visualization"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
