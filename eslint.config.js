@@ -23,6 +23,23 @@ export default tseslint.config(
     },
   },
   {
+    files: ['electron/**/*.{js,cjs,mjs}'],
+    languageOptions: {
+      ecmaVersion: 2022,
+      sourceType: 'commonjs',
+      globals: {
+        require: 'readonly',
+        __dirname: 'readonly',
+        process: 'readonly',
+        module: 'readonly',
+      },
+    },
+    rules: {
+      '@typescript-eslint/no-require-imports': 'off',
+      'no-undef': 'off',
+    },
+  },
+  {
     ignores: ['dist/**', 'node_modules/**'],
   },
 )
