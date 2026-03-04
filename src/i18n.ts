@@ -13,7 +13,7 @@ const resources = {
   en: {
     translation: {
       appTitle: 'Expense Visualizer Pro',
-      appDesc: 'Polished UI, stronger budget controls, and clearer insights.',
+      appDesc: 'A cleaner UI, stronger budget controls, and clearer spending insights.',
       emptyTitle: 'Start with your first expense',
       emptyDesc: 'Use templates below for quick entry, then tune budgets as needed.',
     },

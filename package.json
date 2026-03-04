@@ -25,6 +25,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "desktop": "electron .",
+    "build:win": "npm run build && electron-builder --win portable",
     "preview": "vite preview",
     "test": "vitest run",
     "lint": "eslint .",
@@ -44,6 +46,8 @@
     "eslint": "^9.39.3",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.5.2",
+    "electron": "^37.7.1",
+    "electron-builder": "^26.0.12",
     "husky": "^9.1.7",
     "lint-staged": "^16.3.1",
     "prettier": "^3.8.1",
@@ -52,6 +56,24 @@
     "vite": "^7.3.1",
     "vite-plugin-pwa": "^1.2.0",
     "vitest": "^4.0.18"
+  },
+  "main": "electron/main.cjs",
+  "build": {
+    "appId": "com.expensevisualizer.app",
+    "productName": "Expense Visualizer",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        "portable"
+      ]
+    }
   },
   "dependencies": {
     "chart.js": "^4.5.1",

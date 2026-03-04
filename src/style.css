@@ -1,9 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;700&family=Noto+Sans+SC:wght@400;500;700;800&display=swap');
 
 :root {
+  --text-main: #0f172a;
+  --text-subtle: #334155;
+  --panel-bg: rgba(255, 255, 255, 0.88);
+  --panel-border: #dbe5f2;
+  --brand-1: #1d4ed8;
+  --brand-2: #0ea5e9;
+  --bg-1: #f8fafc;
+  --bg-2: #ecfeff;
+  --bg-3: #dbeafe;
   font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-  color: #0f172a;
-  background: radial-gradient(circle at 8% 5%, #dbeafe 0%, #f8fafc 34%, #f8fafc 100%);
+  color: var(--text-main);
+  background:
+    radial-gradient(circle at 8% 5%, var(--bg-3) 0%, transparent 35%),
+    radial-gradient(circle at 100% 0%, var(--bg-2) 0%, transparent 38%),
+    linear-gradient(170deg, #f8fafc 0%, #f1f5f9 60%, #eef2ff 100%);
   line-height: 1.45;
 }
 
@@ -14,6 +26,7 @@
 body {
   margin: 0;
   min-width: 320px;
+  color: var(--text-main);
 }
 
 #app {
@@ -29,12 +42,22 @@ body {
 }
 
 .panel {
-  background: rgba(255, 255, 255, 0.84);
+  background: var(--panel-bg);
   backdrop-filter: blur(8px);
-  border: 1px solid #dbe5f2;
+  border: 1px solid var(--panel-border);
   border-radius: 14px;
   padding: 1rem;
   box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.panel:hover {
+  border-color: #c8d7ea;
+  box-shadow: 0 16px 34px rgba(15, 23, 42, 0.08);
+  transform: translateY(-1px);
 }
 
 .fade-in {
@@ -67,7 +90,14 @@ body {
 
 .hero p {
   margin: 0.55rem 0 0;
-  color: #334155;
+  color: var(--text-subtle);
+}
+
+.hero-meta {
+  margin-top: 0.6rem;
+  font-size: 0.85rem;
+  color: #64748b;
+  letter-spacing: 0.01em;
 }
 
 .header-actions {
@@ -98,9 +128,10 @@ body {
 }
 
 .tab.active {
-  background: linear-gradient(120deg, #2563eb, #1d4ed8);
+  background: linear-gradient(120deg, var(--brand-2), var(--brand-1));
   color: #fff;
   border-color: transparent;
+  box-shadow: 0 10px 24px rgba(30, 64, 175, 0.26);
 }
 
 .stats-grid {
@@ -110,12 +141,20 @@ body {
 }
 
 .stat-card {
-  background: #fff;
+  background: linear-gradient(150deg, #ffffff 0%, #f8fbff 100%);
   border: 1px solid #d9e4f2;
   border-radius: 12px;
   padding: 0.9rem;
   display: grid;
   gap: 0.3rem;
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.stat-card:hover {
+  border-color: #b8cdeb;
+  transform: translateY(-1px);
 }
 
 .stat-card span {
@@ -219,6 +258,7 @@ body {
   background: #eff6ff;
   color: #1e3a8a;
   border: 1px solid #bfdbfe;
+  border-left: 4px solid #3b82f6;
 }
 
 .budget-controls {
@@ -301,11 +341,21 @@ button {
 input,
 select {
   background: #fff;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.18);
 }
 
 button {
   cursor: pointer;
-  background: linear-gradient(120deg, #2563eb, #1d4ed8);
+  background: linear-gradient(120deg, var(--brand-2), var(--brand-1));
   color: #fff;
   border: none;
   font-weight: 600;
@@ -317,6 +367,13 @@ button {
 button:hover {
   filter: brightness(1.06);
   transform: translateY(-1px);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.56;
+  transform: none;
+  filter: none;
 }
 
 .icon-btn {
@@ -348,6 +405,20 @@ button:hover {
   align-self: end;
 }
 
+.filter-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  margin-top: -0.2rem;
+  padding: 0.55rem 0.65rem;
+  background: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  color: #475569;
+}
+
 .record-list {
   list-style: none;
   margin: 0;
@@ -364,6 +435,14 @@ button:hover {
   justify-content: space-between;
   gap: 1rem;
   background: #fff;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.record-list li:hover {
+  border-color: #c9d9ee;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
 }
 
 .record-list.compact li {
@@ -463,6 +542,11 @@ button:hover {
 }
 
 @media (max-width: 760px) {
+  .filter-summary {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
   .record-list li {
     flex-direction: column;
   }
